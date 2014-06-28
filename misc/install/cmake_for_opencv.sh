@@ -20,14 +20,16 @@ function makeDir() {
         mkdir $BUILD_DIR
         echo "mkdir: $BUILD_DIR"
     fi
-    cd $BUILD_DIR
+    cd $DIR/$BUILD_DIR
+    pwd
 }
 
 function execCmake() {
+    pwd
     $CMAKE \
     -D CMAKE_C_COMPILER=/usr/bin/gcc \
     -D CMAKE_CXX_COMPILER=/usr/bin/g++ \
-    -D CMAKE_C_FLAGS="-march=native -I/usr/local/include" \ 
+    -D CMAKE_C_FLAGS="-march=native -I/usr/local/include" \
     -D CMAKE_CXX_FLAGS="-march=native -I/usr/local/include" \
     -D CMAKE_BUILD_TYPE=RELEASE \
     -D CMAKE_INSTALL_PREFIX=$INSTALL_DIR \
@@ -47,7 +49,6 @@ function execCmake() {
 
 
 function main() {
-    cd $DIR
     checkCmakeVersion
     makeDir
     execCmake

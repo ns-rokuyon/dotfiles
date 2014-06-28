@@ -8,7 +8,10 @@ function main() {
 
     local INSTALL_DIR=~/local
     local TMPDIR=$DIR/tmp
-    local OPENCV_TMPDIR=$TMPDIR/opencv
+    local OPENCV_TMPDIR=$TMPDIR/opencv-$VERSION
+    local OPENCV_BUILD_DIR=$OPENCV_TMPDIR/build
+
+    ./install_prerequisite_packages_for_opencv.sh
     
     if [ ! -d $TMPDIR ]; then
         mkdir $TMPDIR
@@ -37,6 +40,7 @@ function main() {
         exit 1
     fi
 
+    cd $OPENCV_BUILD_DIR
     echo "`date`: make start"
     make
     if [ $? -ne 0 ]; then
