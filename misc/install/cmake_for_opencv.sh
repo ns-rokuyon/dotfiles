@@ -31,9 +31,7 @@ function execCmake() {
     -D CMAKE_CXX_COMPILER=/usr/bin/g++ \
     -D CMAKE_C_FLAGS="-march=native -I/usr/local/include" \
     -D CMAKE_CXX_FLAGS="-march=native -I/usr/local/include" \
-    -D CMAKE_BUILD_TYPE=RELEASE \
     -D CMAKE_INSTALL_PREFIX=$INSTALL_DIR \
-    -D BUILD_opencv_world=ON \
     -D BUILD_NEW_PYTHON_SUPPORT=ON \
     -D PYTHON_EXECUTABLE=/usr/local/bin/python \
     -D PYTHON_LIBRARY=/usr/local/lib/libpython2.7.so \
@@ -41,9 +39,11 @@ function execCmake() {
     -D WITH_QT=OFF \
     -D HAVE_OPENMP=ON \
     -D WITH_OPENCL=OFF \
+    -D BUILD_opencv_world=OFF \
     -D BUILD_EXAMPLES=ON \
     -D INSTALL_C_EXAMPLES=ON \
     -D INSTALL_PYTHON_EXAMPLES=ON ..
+    #-D CMAKE_BUILD_TYPE=RELEASE \
 
 }
 
