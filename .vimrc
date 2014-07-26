@@ -16,6 +16,8 @@ syntax enable
 noremap  <BS>
 noremap!  <BS>
 noremap <S-O> o<ESC>
+noremap <C-j> 5j
+noremap <C-k> 5k
 
 :colorscheme molokai    
 

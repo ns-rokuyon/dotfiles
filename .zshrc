@@ -9,7 +9,8 @@ plugins=(git python ruby rails yum)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/misc/bin:$HOME/bin:/usr/local/bin:$PATH
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/ns64/misc/lib
 
 # # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
