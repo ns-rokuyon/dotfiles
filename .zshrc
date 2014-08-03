@@ -9,15 +9,9 @@ plugins=(git python ruby rails yum)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+. ~/.bashrc
 export PATH=$HOME/misc/bin:$HOME/bin:/usr/local/bin:$PATH
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/ns64/misc/lib
-
-# # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
 
 autoload -U compinit; compinit 
 setopt auto_list               
@@ -29,7 +23,8 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 setopt auto_cd         
 setopt auto_pushd      
-setopt correct         
+#setopt correct         
+unsetopt correct_all
 
 alias ls='ls -la --color=auto'
 alias ks='ls'
