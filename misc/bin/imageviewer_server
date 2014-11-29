@@ -54,7 +54,7 @@ function stop(){
     fi
     echo "stop unicorn : done"
 
-    echo "pgrep unicorn"
+    echo "pgrep nginx"
     pgrep nginx
     if [ $? -eq 0 ]; then
         sudo service nginx stop
