@@ -12,6 +12,7 @@ source $ZSH/oh-my-zsh.sh
 . ~/.bashrc
 export PATH=$HOME/misc/bin:$HOME/bin:/usr/local/bin:$PATH
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/ns64/misc/lib
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/home/ns64/local/lib/pkgconfig
 
 autoload -U compinit; compinit 
 setopt auto_list               
