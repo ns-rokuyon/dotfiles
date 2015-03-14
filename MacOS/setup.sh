@@ -20,19 +20,19 @@ if [ ! -d ~/.oh-my-zsh ]; then
     esac
 fi
 
-cp ../.vimrc ~/
+cp $DIR/../.vimrc ~/
 echo "update: .vimrc"
 
-cp .gvimrc ~/
+cp $DIR/.gvimrc ~/
 echo "update: .gvimrc"
 
-cp .zshrc ~/
+cp $DIR/.zshrc ~/
 echo "update: .zshrc"
 
-cp .bashrc ~/
+cp $DIR/.bashrc ~/
 echo "update: .bashrc"
 
 if [ -d ~/.vim ]; then
-    cp -r ./.vim/colors ~/.vim/
+    cp -r $DIR/../.vim/colors ~/.vim/
 fi
 

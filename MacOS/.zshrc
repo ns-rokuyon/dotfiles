@@ -11,6 +11,13 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# nodejs
+[[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh
+nvm use default
+npm_dir=${NVM_PATH}_modules
+export NODE_PATH=$npm_dir
+
+# zsh
 autoload -U compinit; compinit 
 setopt auto_list               
 setopt auto_menu                
@@ -35,3 +42,8 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH=$PATH:/usr/local/mysql/bin
 
 export MANPATH=/opt/local/share/man:/opt/local/man:$MANPATH
+
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+

@@ -142,6 +142,7 @@ NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tyru/caw.vim.git'
+NeoBundle 'derekwyatt/vim-scala'
 
 filetype plugin on
 filetype indent on
