@@ -130,19 +130,22 @@ filetype off
 
 if has('vim_starting')
     set runtimepath+=~/.vim/neobundle.vim.git
-    call neobundle#rc(expand('~/.vim/.bundle'))
-endif
+    "[deprecated]: call neobundle#rc(expand('~/.vim/.bundle'))
+    call neobundle#begin(expand('~/.vim/bundle/'))
+    NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/vimshell'
-NeoBundle 'Shougo/vimproc'
-NeoBundle 'Shougo/vimfiler'
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'h1mesuke/unite-outline'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'tyru/caw.vim.git'
-NeoBundle 'derekwyatt/vim-scala'
+    NeoBundle 'Shougo/unite.vim'
+    NeoBundle 'Shougo/neocomplcache'
+    NeoBundle 'Shougo/vimshell'
+    NeoBundle 'Shougo/vimproc'
+    NeoBundle 'Shougo/vimfiler'
+    NeoBundle 'itchyny/lightline.vim'
+    NeoBundle 'h1mesuke/unite-outline'
+    NeoBundle 'thinca/vim-quickrun'
+    NeoBundle 'tyru/caw.vim.git'
+    NeoBundle 'derekwyatt/vim-scala'
+    call neobundle#end()
+endif
 
 filetype plugin on
 filetype indent on
