@@ -1,26 +1,45 @@
-#!/bin/sh
+#!/bin/bash
 
-cp ./.vimrc ~/
-echo "cp .vimrc : done"
+DIR=$(cd $(dirname $0) && pwd)
 
-cp ./.zshrc ~/
-echo "cp .zshrc : done"
+copy_file(){
+    filename=$1
 
-cp ./.bashrc ~/
-echo "cp .bashrc : done"
+    cp $DIR/$filename ~/
+    echo "cp $filename : done"
+}
 
-cp ./.tmux.conf ~/
-echo "cp .tmux.conf : done"
+copy_directory(){
+    dir=$1
 
-if [ -d ~/misc ]; then
-    cp -r ./misc/* ~/misc/
-    echo "update misc : done"
-else 
-    cp -r ./misc ~/
-    echo "cp misc directory : done"
-fi
+    if [ -d ~/$dir ]; then
+        cp -r $DIR/$dir/* ~/$dir/
+    else
+        cp -r $DIR/$dir ~/$dir
+    fi
+    echo "cp $dir : done"
+}
 
-if [ -d ~/.vim ]; then
-    cp -r ./.vim/colors ~/.vim/
-fi
+make_directory(){
+    dir=$1
+
+    if [ ! -d ~/$dir ]; then
+        mkdir ~/$dir
+        echo "mkdir $dir : done"
+    fi
+}
+
+main(){
+    copy_file .vimrc
+    copy_file .zshrc
+    copy_file .bashrc
+    copy_file .tmux.conf
+
+    copy_directory misc
+
+    make_directory .vim
+    copy_directory .vim/colors
+}
+
+main "$@"
 
