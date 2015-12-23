@@ -50,6 +50,7 @@ linux_settings(){
     copy_directory .vim/colors
 
     install_neobundle
+    install_ohmyzsh
 
     echo "Linux settings done"
     exit 0
@@ -88,6 +89,14 @@ install_neobundle() {
     chmod 755 $installer
     bash $installer
     rm $installer
+}
+
+install_ohmyzsh() {
+    if [ -d ~/.oh-my-zsh ]; then
+        return
+    fi
+
+    sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 }
 
 main(){
