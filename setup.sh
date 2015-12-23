@@ -48,6 +48,9 @@ linux_settings(){
 
     make_directory .vim
     copy_directory .vim/colors
+
+    install_neobundle
+
     echo "Linux settings done"
     exit 0
 }
@@ -67,8 +70,24 @@ cygwin_settings(){
 
     make_directory .vim
     copy_directory .vim/colors
+
+    install_neobundle
+
     echo "Cygwin settings done"
     exit 0
+}
+
+install_neobundle() {
+    if [ -d ~/.vim/bundle ]; then
+        return
+    fi
+
+    installer=neobundle_installer.sh
+    cd $DIR
+    wget https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh -O $installer
+    chmod 755 $installer
+    bash $installer
+    rm $installer
 }
 
 main(){
@@ -78,7 +97,7 @@ main(){
             h)
                 usage
                 ;;
-            u)
+            l)
                 linux_settings
                 ;;
             m)
