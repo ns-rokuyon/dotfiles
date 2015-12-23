@@ -13,5 +13,18 @@ export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
 export PYTHONPATH=/usr/local/opencv/lib/python2.7/site-packages:/usr/local/lib/python2.7/site-packages:~/git_repos/caffe/python:$PYTHONPATH
 
 # rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+if [ -d ~/.rbenv ]; then
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+fi
+
+# pyenv
+if [ -d ~/.pyenv ]; then
+    export PYENV_ROOT=$HOME/.pyenv
+    export PATH=$PYENV_ROOT/bin:$PATH
+    eval "$(pyenv init -)"
+fi
+
+if [ -d ~/.pyenv/plugins/pyenv-virtualenv ]; then
+    eval "$(pyenv virtualenv-init -)"
+fi

@@ -49,8 +49,10 @@ linux_settings(){
     make_directory .vim
     copy_directory .vim/colors
 
+    install_base_packages ubuntu
     install_neobundle
     install_ohmyzsh
+    install_pyenv
 
     echo "Linux settings done"
     exit 0
@@ -97,6 +99,17 @@ install_ohmyzsh() {
     fi
 
     sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+}
+
+install_pyenv() {
+    $DIR/misc/install/install_pyenv.sh
+}
+
+install_base_packages() {
+    if [ $1 = "ubuntu" ]; then
+        sudo apt-get install make build-essential libssl-dev zlib1g-dev libbz2-dev \
+            libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev
+    fi
 }
 
 main(){

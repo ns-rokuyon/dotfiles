@@ -29,3 +29,20 @@ unsetopt correct_all
 
 alias ls='ls -la --color=auto'
 alias ks='ls'
+
+# rbenv
+if [ -d ~/.rbenv ]; then
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+fi
+
+# pyenv
+if [ -d ~/.pyenv ]; then
+    export PYENV_ROOT=$HOME/.pyenv
+    export PATH=$PYENV_ROOT/bin:$PATH
+    eval "$(pyenv init -)"
+fi
+
+if [ -d ~/.pyenv/plugins/pyenv-virtualenv ]; then
+    eval "$(pyenv virtualenv-init -)"
+fi
