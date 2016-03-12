@@ -49,7 +49,11 @@ linux_settings(){
     make_directory .vim
     copy_directory .vim/colors
 
-    install_base_packages ubuntu
+
+    if [ `uname -a | grep Ubuntu > /dev/null; echo $?` = 0 ]; then
+        copy_file Ubuntu/.Xmodmap
+        install_base_packages ubuntu
+    fi
     install_neobundle
     install_ohmyzsh
     install_pyenv
