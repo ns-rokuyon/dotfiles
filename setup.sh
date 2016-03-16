@@ -54,6 +54,8 @@ linux_settings(){
         copy_file Ubuntu/.Xmodmap
         install_base_packages ubuntu
     fi
+
+    install_zplug
     install_neobundle
     install_ohmyzsh
     install_pyenv
@@ -113,6 +115,15 @@ install_base_packages() {
     if [ $1 = "ubuntu" ]; then
         sudo apt-get install make build-essential libssl-dev zlib1g-dev libbz2-dev \
             libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev
+    fi
+}
+
+install_zplug() {
+    if [ ! -d ~/.zplug ]; then
+        read -p "Install zplug? [y/N]" ans
+        if [ "$ans" = "y" ]; then
+            git clone https://github.com/b4b4r07/zplug ~/.zplug
+        fi
     fi
 }
 

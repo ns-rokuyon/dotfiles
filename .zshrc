@@ -1,12 +1,13 @@
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
 
-# Set name of the theme to load.
-ZSH_THEME="gallois"
+# zplug
+source ~/.zplug/zplug
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-syntax-highlighting"
 
-plugins=(git python ruby rails yum)
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/yum", from:oh-my-zsh
+zplug "plugins/python", from:oh-my-zsh
 
-source $ZSH/oh-my-zsh.sh
 
 # User configuration
 . ~/.bashrc
@@ -46,3 +47,13 @@ fi
 if [ -d ~/.pyenv/plugins/pyenv-virtualenv ]; then
     eval "$(pyenv virtualenv-init -)"
 fi
+
+# zplug
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+zplug load --verbose
+
