@@ -1,0 +1,45 @@
+#!/bin/bash
+
+LOG_FILE=jupyter_notebook.log
+LOG_DIR=/tmp
+
+usage() {
+    echo "Usage: notebook [subcommand]"
+    echo "  - start"
+    echo "  - stop"
+    exit 1
+}
+
+start_notebook() {
+    nohup jupyter notebook >> $LOG_DIR/$LOG_FILE 2>&1 &
+    if [ $? = 0 ]; then
+        echo "http://localhost:9999"
+    fi
+}
+
+stop_notebook() {
+    pkill -f 'jupyter'
+    if [ $? = 0 ]; then
+        echo "jupyter notebook stopped"
+    fi
+}
+
+main() {
+    subcmd=$1
+
+    case $subcmd in
+        start)
+            stop_notebook
+            start_notebook
+            ;;
+        stop)
+            stop_notebook
+            ;;
+        *)
+            usage
+            ;;
+    esac
+    exit 0
+}
+
+main "$@"
