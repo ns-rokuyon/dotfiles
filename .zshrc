@@ -1,4 +1,9 @@
 
+# User configuration
+export PATH=/bin:/usr/bin:/usr/local/bin:$HOME/misc/bin:$HOME/bin:/usr/local/bin
+export LD_LIBRARY_PATH=/lib64:/usr/lib:/usr/local/lib:/home/ns64/misc/lib
+export PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/local/lib/pkgconfig:/home/ns64/local/lib/pkgconfig
+
 # zplug
 source ~/.zplug/zplug
 zplug "zsh-users/zsh-history-substring-search"
@@ -7,13 +12,6 @@ zplug "zsh-users/zsh-syntax-highlighting"
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/yum", from:oh-my-zsh
 zplug "plugins/python", from:oh-my-zsh
-
-
-# User configuration
-. ~/.bashrc
-export PATH=$HOME/misc/bin:$HOME/bin:/usr/local/bin:$PATH
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/ns64/misc/lib
-export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/home/ns64/local/lib/pkgconfig
 
 autoload -U compinit; compinit 
 setopt auto_list               
@@ -27,9 +25,6 @@ setopt auto_cd
 setopt auto_pushd      
 #setopt correct         
 unsetopt correct_all
-
-alias ls='ls -la --color=auto'
-alias ks='ls'
 
 # rbenv
 if [ -d ~/.rbenv ]; then
@@ -56,4 +51,7 @@ if ! zplug check --verbose; then
     fi
 fi
 zplug load --verbose
+
+alias ls='ls -la --color=auto'
+alias ks='ls'
 
