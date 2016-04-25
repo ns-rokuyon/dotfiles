@@ -11,6 +11,7 @@ usage() {
 }
 
 start_notebook() {
+    cd ~
     nohup jupyter notebook >> $LOG_DIR/$LOG_FILE 2>&1 &
     if [ $? = 0 ]; then
         echo "http://localhost:9999"
