@@ -1,0 +1,62 @@
+#!/bin/bash
+
+usage() {
+    echo "Usage: . myenv -s"
+}
+
+show_env() {
+    cat <<EOS
+===================================
+PATH=$PATH
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH
+PYTHONPATH=$PYTHONPATH
+===================================
+EOS
+}
+
+set_env() {
+    if [ -d /usr/local/cuda ]; then
+        echo "Found: CUDA"
+        export CUDA_HOME=/usr/local/cuda
+        export PATH=$CUDA_HOME/bin:$PATH
+        export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+    fi
+
+    if [ -d $HOME/local/boost-1.58.0 ]; then
+        echo "Found: boost-1.58.0"
+        export LD_LIBRARY_PATH=$HOME/local/boost-1.58.0/lib:$LD_LIBRARY_PATH
+    fi
+
+    if [ `pyenv global | grep anaconda` ]; then
+        echo "Found: `pyenv version`"
+        export LD_LIBRARY_PATH=$HOME/.pyenv/versions/`pyenv global`/lib:$LD_LIBRARY_PATH
+    fi
+
+    if [ -d $HOME/oss/caffe ]; then
+        echo "Found: Caffe"
+        export CAFFE_DIR=$HOME/oss/caffe
+        export LD_LIBRARY_PATH=$CAFFE_DIR/build/lib:$LD_LIBRARY_PATH
+        export PYTHONPATH=$CAFFE_DIR/python:$PYTHONPATH
+    fi
+}
+
+main() {
+    while [ ! "$1" = "" ];
+    do
+        case $1 in
+            -s|--set)
+                set_env
+                ;;
+            -r|--reset)
+                source ~/.zshrc
+                ;;
+            *)
+                :
+                ;;
+        esac
+        shift
+    done
+    show_env
+}
+
+main "$@"

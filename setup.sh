@@ -6,11 +6,11 @@ usage(){
     echo "Usage: ./setup.sh [OPTIONS]"
     echo "  Options:"
     echo "      -l  :   Linux"
+    echo "      -L  :   Linux (with updating base packages)"
     echo "      -m  :   Mac"
     echo "      -w  :   Windows"
     exit 1
-}
-
+} 
 copy_file(){
     filename=$1
 
@@ -52,7 +52,6 @@ linux_settings(){
 
     if [ `uname -a | grep Ubuntu > /dev/null; echo $?` = 0 ]; then
         copy_file Ubuntu/.Xmodmap
-        install_base_packages ubuntu
     fi
 
     install_zplug
@@ -61,13 +60,19 @@ linux_settings(){
     install_pyenv
 
     echo "Linux settings done"
-    exit 0
+}
+
+linux_settings_and_basepackages() {
+    linux_settings
+
+    if [ `uname -a | grep Ubuntu > /dev/null; echo $?` = 0 ]; then
+        install_base_packages ubuntu
+    fi
 }
 
 mac_settings(){
     ./MacOSX/setup.sh
     echo "MacOSX settings done"
-    exit 0
 }
 
 cygwin_settings(){
@@ -83,7 +88,6 @@ cygwin_settings(){
     install_neobundle
 
     echo "Cygwin settings done"
-    exit 0
 }
 
 install_neobundle() {
@@ -136,12 +140,19 @@ main(){
                 ;;
             l)
                 linux_settings
+                exit 0
+                ;;
+            L)
+                linux_settings_and_basepackages
+                exit 0
                 ;;
             m)
                 mac_settings
+                exit 0
                 ;;
             w)
                 cygwin_settings
+                exit 0
                 ;;
             \?)
                 usage
