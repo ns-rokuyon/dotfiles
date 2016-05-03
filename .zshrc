@@ -1,7 +1,7 @@
 
 # User configuration
-export PATH=/bin:/usr/bin:/usr/local/bin:$HOME/misc/bin:$HOME/bin:/usr/local/bin
-export LD_LIBRARY_PATH=/lib64:/usr/lib:/usr/local/lib:/home/ns64/misc/lib
+export PATH=/bin:/usr/bin:/usr/local/bin:$HOME/misc/bin:$HOME/local/bin:$HOME/bin:/usr/local/bin
+export LD_LIBRARY_PATH=/lib64:/usr/lib:/usr/local/lib:/home/ns64/misc/lib:$HOME/local/lib
 export PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/local/lib/pkgconfig:/home/ns64/local/lib/pkgconfig
 
 # zplug
