@@ -1,0 +1,43 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+
+[[plugins]]
+repo = 'Shougo/neocomplcache'
+
+[[plugins]]
+repo = 'Shougo/vimshell'
+
+[[plugins]]
+repo = 'Shougo/vimproc'
+hook_post_update = '''
+    if dein#util#_is_cygwin()
+        let s:cmd = 'make -f make_cygwin.mak'
+    else
+        let s:cmd = 'make'
+    endif
+    let g:dein#plugin.build = s:cmd
+'''
+
+[[plugins]]
+repo = 'Shougo/vimfiler'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+
+[[plugins]]
+repo = 'h1mesuke/unite-outline'
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+
+[[plugins]]
+repo = 'tyru/caw.vim.git'
+
+[[plugins]]
+repo = 'derekwyatt/vim-scala'

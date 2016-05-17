@@ -11,6 +11,7 @@ usage(){
     echo "      -w  :   Windows"
     exit 1
 } 
+
 copy_file(){
     filename=$1
 
@@ -48,6 +49,7 @@ linux_settings(){
 
     make_directory .vim
     copy_directory .vim/colors
+    copy_directory .vim/rc
 
 
     if [ `uname -a | grep Ubuntu > /dev/null; echo $?` = 0 ]; then
@@ -84,6 +86,7 @@ cygwin_settings(){
 
     make_directory .vim
     copy_directory .vim/colors
+    copy_directory .vim/rc
 
     install_neobundle
 

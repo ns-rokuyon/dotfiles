@@ -124,27 +124,38 @@ inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
 let g:neocomplcache_enable_insert_char_pre = 1  
 inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "<CR>"
 
-" NeoBundle
-set nocompatible
-filetype off
+" dein.vim
+let g:use_dein = 1
+if g:use_dein && v:version >= 704
+    let s:dein_dir = expand('~/.vim/dein')
+    let s:rc_dir = expand('~/.vim/rc')
+    let s:dein_github = s:dein_dir . '/repos/github.com'
+    let s:dein_repo_dir = s:dein_github . '/Shougo/dein.vim'
 
-if has('vim_starting')
-    set runtimepath+=~/.vim/bundle/neobundle.vim
-    "[deprecated]: call neobundle#rc(expand('~/.vim/.bundle'))
-    call neobundle#begin(expand('~/.vim/bundle/'))
-    NeoBundleFetch 'Shougo/neobundle.vim'
+    if &runtimepath !~# '/dein.vim'
+        if !isdirectory(s:dein_repo_dir)
+            execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+        endif
+        let &runtimepath = &runtimepath . "," . s:dein_repo_dir
+    endif
 
-    NeoBundle 'Shougo/unite.vim'
-    NeoBundle 'Shougo/neocomplcache'
-    NeoBundle 'Shougo/vimshell'
-    NeoBundle 'Shougo/vimproc'
-    NeoBundle 'Shougo/vimfiler'
-    NeoBundle 'itchyny/lightline.vim'
-    NeoBundle 'h1mesuke/unite-outline'
-    NeoBundle 'thinca/vim-quickrun'
-    NeoBundle 'tyru/caw.vim.git'
-    NeoBundle 'derekwyatt/vim-scala'
-    call neobundle#end()
+    if dein#load_state(s:dein_dir)
+        call dein#begin(s:dein_dir)
+
+        let s:toml = s:rc_dir . '/dein.toml'
+        let s:lazy_toml = s:rc_dir . '/dein_lazy.toml'
+
+        call dein#load_toml(s:toml, {'lazy': 0})
+        call dein#load_toml(s:lazy_toml, {'lazy': 1})
+
+        call dein#end()
+        call dein#save_state()
+    endif
+
+    if dein#check_install()
+        " 未インストールのプラグインをインストール
+        call dein#install()
+    endif
 endif
 
 filetype plugin on
