@@ -5,7 +5,7 @@ export LD_LIBRARY_PATH=/lib64:/usr/lib:/usr/local/lib:/home/ns64/misc/lib:$HOME/
 export PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/local/lib/pkgconfig:/home/ns64/local/lib/pkgconfig
 
 # zplug
-source ~/.zplug/zplug
+source ~/.zplug/init.zsh
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting"
 
@@ -25,6 +25,18 @@ setopt auto_cd
 setopt auto_pushd      
 #setopt correct         
 unsetopt correct_all
+
+# git
+# (http://tkengo.github.io/blog/2013/05/12/zsh-vcs-info/)
+autoload -Uz vcs_info
+setopt prompt_subst
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
+zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () { vcs_info }
+RPROMPT='${vcs_info_msg_0_}'
 
 # rbenv
 if [ -d ~/.rbenv ]; then
