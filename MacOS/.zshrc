@@ -32,7 +32,11 @@ setopt correct
 
 export CLICOLOR=true
 
-alias ls='ls -la'
+if [ -f /usr/local/bin/gls ]; then
+    alias ls='gls -la --color=auto'
+else
+    alias ls='ls -la -G'
+fi
 alias ks='ls'
 
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'

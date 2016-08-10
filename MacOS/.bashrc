@@ -1,5 +1,4 @@
 alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
-alias ls='ls -la -G'
 alias platex='platex --kanji==utf8'
 alias javac='javac -J-Dfile.encoding=UTF-8'
 alias java='java -Dfile.encoding=UTF-8'
@@ -9,6 +8,12 @@ alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"
 
 export PS1='\[\033[40;1;32m\]\W \[\033[40;2;37m\]\u\[\033[0m\] $ '
 
+if [ -f /usr/local/bin/gls ]; then
+    alias ls='gls -la --color=auto'
+else
+    alias ls='ls -la -G'
+fi
+alias ks='ls'
 
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export MANPATH=/opt/local/share/man:/opt/local/man:$MANPATH
