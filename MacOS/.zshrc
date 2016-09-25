@@ -1,18 +1,27 @@
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
-
-# Set name of the theme to load.
-ZSH_THEME="gallois"
-
-plugins=(git python ruby rails yum)
-
-source $ZSH/oh-my-zsh.sh
-
 # User configuration
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# zplug
+source ~/.zplug/init.zsh
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-syntax-highlighting"
+
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/yum", from:oh-my-zsh
+zplug "plugins/python", from:oh-my-zsh
+
+# zplug
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+zplug load --verbose
+
 # nodejs
 [[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh
+nvm alias default v0.11.10
 nvm use default
 npm_dir=${NVM_PATH}_modules
 export NODE_PATH=$npm_dir
@@ -50,4 +59,9 @@ export MANPATH=/opt/local/share/man:/opt/local/man:$MANPATH
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# Golang
+if which go > /dev/null; then
+    export GOPATH=$HOME/go
+fi
 
