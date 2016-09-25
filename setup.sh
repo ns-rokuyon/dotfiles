@@ -73,7 +73,9 @@ linux_settings_and_basepackages() {
 }
 
 mac_settings(){
-    ./MacOSX/setup.sh
+    ./MacOS/setup.sh
+    copy_directory .vim/rc
+    install_zplug
     echo "MacOSX settings done"
 }
 

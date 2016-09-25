@@ -104,29 +104,9 @@ map <silent> [Tag]n :tabnext<CR>
 map <silent> [Tag]p :tabprevious<CR>
 
 
-"========================
-" Unite.vim
-"========================
-let g:unite_enable_start_insert=0   
-noremap <C-U><C-B> :Unite buffer<CR>
-noremap <C-U><C-F> :VimFilerBufferDir -split -simple -winwidth=20 -no-quit<CR>
-noremap <C-U><C-M> :Unite buffer file_mru<CR>
-noremap <C-U><C-Y> :Unite -buffer-name=register register<CR>
-let g:unite_split_rule = 'botright'
-noremap <C-U><C-O> :Unite -vertical -winwidth=30 outline<CR>
-
-" neocomplcache
-set completeopt=menuone   
-let g:neocomplcache_enable_at_startup=1  
-let g:neocomplcache_enable_underbar_completion = 1  
-inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
-inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
-let g:neocomplcache_enable_insert_char_pre = 1  
-inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "<CR>"
-
 " dein.vim
 let g:use_dein = 1
-if g:use_dein && v:version >= 704
+if g:use_dein && v:version >= 703
     let s:dein_dir = expand('~/.vim/dein')
     let s:rc_dir = expand('~/.vim/rc')
     let s:dein_github = s:dein_dir . '/repos/github.com'
@@ -160,6 +140,26 @@ endif
 
 filetype plugin on
 filetype indent on
+
+"========================
+" Unite.vim
+"========================
+let g:unite_enable_start_insert=0   
+noremap <C-U><C-B> :Unite buffer<CR>
+noremap <C-U><C-F> :VimFilerBufferDir -split -simple -winwidth=20 -no-quit<CR>
+noremap <C-U><C-M> :Unite buffer file_mru<CR>
+noremap <C-U><C-Y> :Unite -buffer-name=register register<CR>
+let g:unite_split_rule = 'botright'
+noremap <C-U><C-O> :Unite -vertical -winwidth=30 outline<CR>
+
+" neocomplcache
+set completeopt=menuone   
+let g:neocomplcache_enable_at_startup=1  
+let g:neocomplcache_enable_underbar_completion = 1  
+inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
+let g:neocomplcache_enable_insert_char_pre = 1  
+inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "<CR>"
 
 " lightline
 let g:lightline = { 'colorscheme': 'landscape'}
