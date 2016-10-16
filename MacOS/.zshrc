@@ -40,6 +40,16 @@ setopt auto_pushd
 setopt correct         
 
 export CLICOLOR=true
+autoload -Uz vcs_info    
+setopt prompt_subst    
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
+zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () { vcs_info }
+PROMPT="[%{${fg[green]}%}%n%{${reset_color}%}@%F{blue}localhost%f:%d]$ "
+RPROMPT='${vcs_info_msg_0_}'
 
 if [ -f /usr/local/bin/gls ]; then
     alias ls='gls -la --color=auto'
