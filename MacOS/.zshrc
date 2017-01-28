@@ -61,7 +61,7 @@ alias ks='ls'
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export PATH=$PATH:/opt/local/bin:/opt/local/sbin
 export PATH=$PATH:/usr/local/mysql/bin
 
 export MANPATH=/opt/local/share/man:/opt/local/man:$MANPATH
