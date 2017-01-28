@@ -21,7 +21,6 @@ noremap <C-k> 5k
 
 :colorscheme molokai    
 
-
 "========================
 " Tab, インデント
 "========================
@@ -127,6 +126,8 @@ if g:use_dein && v:version >= 703
 
         call dein#load_toml(s:toml, {'lazy': 0})
         call dein#load_toml(s:lazy_toml, {'lazy': 1})
+
+        call dein#local('~/git_repos/', {'frozen': 1}, ['*.vim'])
 
         call dein#end()
         call dein#save_state()

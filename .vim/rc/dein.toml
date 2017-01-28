@@ -41,3 +41,6 @@ repo = 'tyru/caw.vim.git'
 
 [[plugins]]
 repo = 'derekwyatt/vim-scala'
+
+[[plugins]]
+repo = 'mopp/layoutplugin.vim'
