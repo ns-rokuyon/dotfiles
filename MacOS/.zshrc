@@ -75,6 +75,9 @@ eval "$(pyenv init -)"
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
+# openssl
+export PATH=/usr/local/opt/openssl/bin:$PATH
+
 # Golang
 if which go > /dev/null; then
     export GOPATH=$HOME/go
