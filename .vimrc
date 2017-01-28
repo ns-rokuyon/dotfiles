@@ -11,6 +11,7 @@ set number
 set ruler         
 set showmatch       " 対応するカッコを表示
 set nobackup        " バックアップファイルを作成しない
+set noundofile      " .un~ファイルを作成しない
 
 syntax enable
 noremap  <BS>
