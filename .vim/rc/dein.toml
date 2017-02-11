@@ -44,3 +44,9 @@ repo = 'derekwyatt/vim-scala'
 
 [[plugins]]
 repo = 'mopp/layoutplugin.vim'
+
+[[plugins]]
+repo = 'posva/vim-vue'
+
+[[plugins]]
+repo = 'davidhalter/jedi-vim'
