@@ -53,12 +53,11 @@ linux_settings(){
 
 
     if [ `uname -a | grep Ubuntu > /dev/null; echo $?` = 0 ]; then
-        copy_file Ubuntu/.Xmodmap
+        # copy_file Ubuntu/.Xmodmap
+	:
     fi
 
     install_zplug
-    install_neobundle
-    install_ohmyzsh
     install_pyenv
 
     echo "Linux settings done"
