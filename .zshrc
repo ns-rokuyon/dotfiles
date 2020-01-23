@@ -1,10 +1,12 @@
 
 # User configuration
+# =======================================================
 export PATH=/bin:/usr/bin:/usr/local/bin:$HOME/misc/bin:$HOME/local/bin:$HOME/bin:/usr/local/bin
 export LD_LIBRARY_PATH=/lib64:/usr/lib:/usr/local/lib:/home/ns64/misc/lib:$HOME/local/lib
 export PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/local/lib/pkgconfig:/home/ns64/local/lib/pkgconfig
 
 # zplug
+# =======================================================
 source ~/.zplug/init.zsh
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting"
@@ -26,8 +28,16 @@ setopt auto_pushd
 #setopt correct         
 unsetopt correct_all
 
+# Prompt
+# =======================================================
+autoload -Uz colors
+colors
+PROMPT='%{$fg[green]%}[%n@%m]%{$reset_color%} %~ %# '
+
+
 # git
 # (http://tkengo.github.io/blog/2013/05/12/zsh-vcs-info/)
+# =======================================================
 autoload -Uz vcs_info
 setopt prompt_subst
 zstyle ':vcs_info:git:*' check-for-changes true
