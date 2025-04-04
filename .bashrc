@@ -19,12 +19,20 @@ if [ -d ~/.rbenv ]; then
 fi
 
 # pyenv
-if [ -d ~/.pyenv ]; then
-    export PYENV_ROOT=$HOME/.pyenv
-    export PATH=$PYENV_ROOT/bin:$PATH
-    eval "$(pyenv init -)"
-fi
+# if [ -d ~/.pyenv ]; then
+#     export PYENV_ROOT=$HOME/.pyenv
+#     export PATH=$PYENV_ROOT/bin:$PATH
+#     eval "$(pyenv init -)"
+# fi
 
-if [ -d ~/.pyenv/plugins/pyenv-virtualenv ]; then
-    eval "$(pyenv virtualenv-init -)"
-fi
+# if [ -d ~/.pyenv/plugins/pyenv-virtualenv ]; then
+#    eval "$(pyenv virtualenv-init -)"
+# fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/ns64/google-cloud-sdk/path.bash.inc' ]; then . '/home/ns64/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/ns64/google-cloud-sdk/completion.bash.inc' ]; then . '/home/ns64/google-cloud-sdk/completion.bash.inc'; fi
+
+. "$HOME/.local/bin/env"

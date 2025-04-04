@@ -55,15 +55,15 @@ if [ -d ~/.rbenv ]; then
 fi
 
 # pyenv
-if [ -d ~/.pyenv ]; then
-    export PYENV_ROOT=$HOME/.pyenv
-    export PATH=$PYENV_ROOT/bin:$PATH
-    eval "$(pyenv init -)"
-fi
+# if [ -d ~/.pyenv ]; then
+#     export PYENV_ROOT=$HOME/.pyenv
+#     export PATH=$PYENV_ROOT/bin:$PATH
+#     eval "$(pyenv init -)"
+# fi
 
-if [ -d ~/.pyenv/plugins/pyenv-virtualenv ]; then
-    eval "$(pyenv virtualenv-init -)"
-fi
+# if [ -d ~/.pyenv/plugins/pyenv-virtualenv ]; then
+#     eval "$(pyenv virtualenv-init -)"
+# fi
 
 # zplug
 if ! zplug check --verbose; then
@@ -77,3 +77,5 @@ zplug load --verbose
 alias ls='ls -la --color=auto'
 alias ks='ls'
 
+
+. "$HOME/.local/bin/env"
